@@ -128,9 +128,9 @@ export default function ToastDocs() {
     ? `<NextToast richColors={true} />`
     : `<NextToast richColors={false} />`;
 
-  const richColorsOrDefaultSnippet = `<NextToast richColors={${isRichColors ? "true" : "false"}} />`;
+  const richColorsOrDefaultSnippet = `richColors={${isRichColors ? "true" : "false"}}`;
 
-  const basicDefaultConfigSnippet = `<NextToast closeButton={${showCloseBtn ? "true" : "false"}} richColors={false} />`;
+  const basicDefaultConfigSnippet = `<NextToast closeButton={${showCloseBtn ? "true" : "false"}} ${richColorsOrDefaultSnippet} />`;
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -546,7 +546,6 @@ export default function RootLayout({ children }) {
                 </Button>
               </div>
 
-              {/* FIXED: this block always reflects actual richColors state only here */}
               <CodeBlock
                 label="Renderer config"
                 code={richColorsOrDefaultSnippet}
