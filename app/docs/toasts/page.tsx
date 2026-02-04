@@ -13,7 +13,6 @@ import {
   Undo2,
   ShieldAlert,
   Puzzle,
-  Trash2,
   RefreshCcw,
   Ban,
 } from "lucide-react";
@@ -228,9 +227,19 @@ export default function ToastsPage() {
 
       <CodeExampleTabs
         title="Non-dismissible"
-        code={`toast.info("Policy updated", { dismissible: false, duration: 3000 });`}
+        code={`toast.add({
+  type: "info",
+  message: "Policy updated",
+  dismissible: false,
+  duration: 3000,
+});`}
         onRun={() =>
-          toast.info("Policy updated", { dismissible: false, duration: 3000 })
+          toast.add({
+            type: "info",
+            message: "Policy updated",
+            dismissible: false,
+            duration: 3000,
+          })
         }
         runLabel="Show toast"
       />
@@ -403,7 +412,7 @@ setTimeout(() => {
 ));`}
         onRun={() =>
           toast.custom((t) => (
-            <div className="bg-black text-white px-6 py-4 rounded-none  shadow-xl flex items-center justify-between gap-4">
+            <div className="bg-black text-white px-6 py-4 rounded-none shadow-xl flex items-center justify-between gap-4">
               <span className="font-semibold">Custom toast</span>
               <button
                 onClick={() => toast.dismiss(t.id)}
@@ -485,6 +494,7 @@ setTimeout(() => toast.dismiss(id), 1200);`}
       <DocsHeading as="h2" id="api">
         API References
       </DocsHeading>
+
       <div className="not-prose rounded-xl border bg-card">
         <div className="flex items-center justify-between border-b px-4 py-3">
           <div className="text-sm font-semibold">Toast Options</div>
@@ -524,7 +534,7 @@ setTimeout(() => toast.dismiss(id), 1200);`}
                 <TableCell>
                   <Badge variant="secondary">2000</Badge>
                 </TableCell>
-                <TableCell className="text-muted-foreground text-wrap">
+                <TableCell className="text-muted-foreground">
                   Auto-dismiss time in milliseconds. Use{" "}
                   <span className="font-mono">Infinity</span> to keep it open.
                 </TableCell>
@@ -536,10 +546,8 @@ setTimeout(() => toast.dismiss(id), 1200);`}
                 <TableCell>
                   <Badge variant="secondary">true</Badge>
                 </TableCell>
-                <TableCell className="text-muted-foreground text-wrap">
-                  <p className="text-wrap">
-                    Whether the toast can be dismissed manually.
-                  </p>
+                <TableCell className="text-muted-foreground">
+                  Whether the toast can be dismissed manually.
                 </TableCell>
               </TableRow>
 
@@ -551,11 +559,8 @@ setTimeout(() => toast.dismiss(id), 1200);`}
                 <TableCell>
                   <Badge variant="secondary">—</Badge>
                 </TableCell>
-                <TableCell className="text-muted-foreground text-wrap">
-                  <p className="text-wrap">
-                    Adds an action button (for example Undo / Retry). The
-                    handler receives the button click event.
-                  </p>
+                <TableCell className="text-muted-foreground">
+                  Adds an action button (for example Undo / Retry).
                 </TableCell>
               </TableRow>
 
@@ -568,10 +573,8 @@ setTimeout(() => toast.dismiss(id), 1200);`}
                   <Badge variant="secondary">auto</Badge>
                 </TableCell>
                 <TableCell className="text-muted-foreground">
-                  <p className="text-wrap">
-                    Optional custom id. If not provided, NextToast generates
-                    one. Useful to update or dismiss a specific toast.
-                  </p>
+                  Optional custom id. Useful to update or dismiss a specific
+                  toast.
                 </TableCell>
               </TableRow>
             </TableBody>
@@ -584,6 +587,7 @@ setTimeout(() => toast.dismiss(id), 1200);`}
           </div>
         </div>
       </div>
+
       <DocsHeading as="h2" id="next">
         Next
       </DocsHeading>

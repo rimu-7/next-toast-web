@@ -73,16 +73,11 @@ export function DocsShell({ children }: { children: React.ReactNode }) {
             <div className="md:rounded-xl md:border md:bg-card">
               <ScrollArea
                 className="hidden md:block md:h-[calc(100vh-7.5rem)]"
-                viewportClassName="docs-scroll-viewport"
               >
                 <div id="docs-content" className="p-4 md:p-6">
                   {children}
                 </div>
               </ScrollArea>
-
-              <div id="docs-content" className="md:hidden">
-                {children}
-              </div>
             </div>
           </main>
 

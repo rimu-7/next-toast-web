@@ -14,12 +14,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import Link from "next/link";
 
 const fruk = Rubik_Puddles({
@@ -92,24 +86,18 @@ export default function ToastDocs() {
       label: "GitHub",
       href: repoUrl,
       icon: <Github className="h-4 w-4" />,
-      badge: null,
-      tooltip: null as string | null,
     },
     {
       id: 2,
       label: "NPM",
       href: "https://www.npmjs.com/package/next-toast",
       icon: <Package className="h-4 w-4" />,
-      badge: null,
-      tooltip: null as string | null,
     },
     {
       id: 3,
       label: "Docs",
       href: "/docs/get-started",
       icon: <BookOpen className="h-4 w-4" />,
-      badge: null,
-      tolltip: "Docs",
     },
   ] as const;
 
@@ -171,48 +159,25 @@ export default function ToastDocs() {
 
           {/* External Links */}
           <div className="flex flex-wrap gap-3">
-            {LINKS.map((link) => (
-              <TooltipProvider key={link.id}>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={link.href}
-                      rel="noopener noreferrer"
-                      className={cn(
-                        "group inline-flex items-center gap-2 rounded-lg border bg-card px-4 py-2 text-sm font-medium",
-                        "text-muted-foreground transition hover:text-foreground hover:border-border/80",
-                        "active:scale-[0.98]",
-                      )}
-                    >
-                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">
-                        {link.icon}
-                      </span>
-
-                      <span>{link.label}</span>
-
-                      {/* keep skeleton block removed now (no stars) */}
-                      {link.badge && (
-                        <>
-                          <Separator
-                            orientation="vertical"
-                            className="mx-1 h-4"
-                          />
-                          <Badge variant="secondary" className="gap-1">
-                            {link.badge}
-                          </Badge>
-                        </>
-                      )}
-                    </Link>
-                  </TooltipTrigger>
-
-                  {link.tooltip ? (
-                    <TooltipContent>
-                      <p className="max-w-[280px] text-sm">{link.tooltip}</p>
-                    </TooltipContent>
-                  ) : null}
-                </Tooltip>
-              </TooltipProvider>
-            ))}
+            <div className="flex flex-wrap gap-3">
+              {LINKS.map((link) => (
+                <Link
+                  key={link.id}
+                  href={link.href}
+                  rel="noopener noreferrer"
+                  className={cn(
+                    "group inline-flex items-center gap-2 rounded-lg border bg-card px-4 py-2 text-sm font-medium",
+                    "text-muted-foreground transition hover:text-foreground hover:border-border/80",
+                    "active:scale-[0.98]",
+                  )}
+                >
+                  <span className="text-muted-foreground group-hover:text-foreground transition-colors">
+                    {link.icon}
+                  </span>
+                  <span>{link.label}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </header>
 

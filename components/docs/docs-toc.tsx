@@ -74,10 +74,7 @@ export function DocsToc() {
     const scope = document.getElementById("docs-content");
     if (!scope) return;
 
-    // If we're on desktop, ScrollArea viewport exists; use it as IO root.
-    // If not found, default to window scroll.
-    const scrollRoot =
-      document.querySelector<HTMLElement>(".docs-scroll-viewport") ?? null;
+    const scrollRoot = document.getElementById("docs-scroll-viewport");
 
     const obs = new IntersectionObserver(
       (entries) => {
