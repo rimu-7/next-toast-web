@@ -1,74 +1,67 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-// Unique Font Contenders
-import {
-  Space_Grotesk,
-  Bricolage_Grotesque,
-  Plus_Jakarta_Sans,
-  Outfit,
-  Lexend,
-  DM_Serif_Text,
-} from "next/font/google";
+import { Lexend } from "next/font/google";
 
 import { NextToast } from "next-toast";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteNavbar } from "@/components/navbar";
 import { SiteFooter } from "@/components/footer";
 
-// Font Configurations
-const space = Space_Grotesk({ subsets: ["latin"], variable: "--font-space" });
-const bricolage = Bricolage_Grotesque({
-  subsets: ["latin"],
-  variable: "--font-bricolage",
-});
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
-});
-const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 const lexend = Lexend({ subsets: ["latin"], variable: "--font-lexend" });
-const dmserif = DM_Serif_Text({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-serif",
-});
+
+const SITE_URL = "https://toast.rimubhai.com";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://next-toast.vercel.app"),
+  metadataBase: new URL(SITE_URL),
+
   applicationName: "NextToast",
+
   title: {
     default: "NextToast — Toast Notifications for Next.js",
     template: "%s — NextToast",
   },
+
   description:
     "NextToast is a lightweight, zero-dependency toast notification library for Next.js and React. Clean API, rich colors, promise handling, and confirm flows.",
+
   keywords: [
-    "next toast",
-    "nextjs toast",
+    "NextToast",
     "toast notifications",
-    "react toast",
-    "notification component",
+    "Next.js toast",
+    "React toast",
+    "toast component",
     "sonner alternative",
-    "next.js app router toast",
-    "ui toast library",
-    "nexttoast",
+    "Next.js App Router",
+    "UI notifications",
   ],
-  authors: [{ name: "NextToast" }],
-  creator: "NextToast",
-  publisher: "NextToast",
-  category: "technology",
-  alternates: { canonical: "/" },
+
+  alternates: {
+    canonical: SITE_URL,
+  },
+
+  verification: {
+    google: "LU3V9H0GGuC8ow7uQSCv05MSnC1vQyM0dFOx0zkbFII",
+  },
+
   openGraph: {
     type: "website",
-    url: "https://next-toast.vercel.app",
+    url: SITE_URL,
     title: "NextToast — Toast Notifications for Next.js",
     description:
       "A lightweight, zero-dependency toast notification system for Next.js.",
     siteName: "NextToast",
     locale: "en_US",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "NextToast" }],
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "NextToast — Toast Notifications for Next.js",
+      },
+    ],
   },
+
   twitter: {
     card: "summary_large_image",
     title: "NextToast — Toast Notifications for Next.js",
@@ -76,9 +69,25 @@ export const metadata: Metadata = {
       "Lightweight, zero-dependency toast notifications for Next.js and React.",
     images: ["/og.png"],
   },
+
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+
+  category: "technology",
+
+  // Optional but nice: helps SERP branding
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 
