@@ -325,11 +325,19 @@ toast.warning("Toast 3 will overflow");`}
         when possible.
       </p>
 
+      {/* ✅ FIXED: use toast.add so dismissible is allowed by types */}
       <CodeExampleTabs
         title="Non-dismissible toast"
-        code={`toast.info("Processing request...", { dismissible: false, duration: 3000 });`}
+        code={`toast.add({
+  type: "info",
+  message: "Processing request...",
+  dismissible: false,
+  duration: 3000,
+});`}
         onRun={() =>
-          toast.info("Processing request...", {
+          toast.add({
+            type: "info",
+            message: "Processing request...",
             dismissible: false,
             duration: 3000,
           })
@@ -397,19 +405,19 @@ toast.error("Payment failed", { duration: 6000 });`}
             <TableBody>
               <TableRow>
                 <TableCell className="font-mono text-sm">position</TableCell>
-                <TableCell className="font-mono text-sm flex flex-col">
-                  <span className="flex flex-col">
-                    <p> {'"top-left" | "top-center" | "top-right"'}</p>
-                    <p>{'"bottom-left" | "bottom-center" | "bottom-right"'}</p>
-                  </span>
+                <TableCell className="font-mono text-sm">
+                  <div className="space-y-1">
+                    <div>{'"top-left" | "top-center" | "top-right"'}</div>
+                    <div>
+                      {'"bottom-left" | "bottom-center" | "bottom-right"'}
+                    </div>
+                  </div>
                 </TableCell>
                 <TableCell>
                   <Badge variant="secondary">top-center</Badge>
                 </TableCell>
                 <TableCell className="text-muted-foreground">
-                  <p className="text-wrap">
-                    Controls where the toast stack appears on the screen.
-                  </p>
+                  Controls where the toast stack appears on the screen.
                 </TableCell>
               </TableRow>
 
@@ -420,10 +428,8 @@ toast.error("Payment failed", { duration: 6000 });`}
                   <Badge variant="secondary">false</Badge>
                 </TableCell>
                 <TableCell className="text-muted-foreground">
-                  <p className="text-wrap">
-                    Enables stronger background colors per toast type (success,
-                    error, warning, info).
-                  </p>
+                  Enables stronger background colors per toast type (success,
+                  error, warning, info).
                 </TableCell>
               </TableRow>
 
@@ -445,16 +451,13 @@ toast.error("Payment failed", { duration: 6000 });`}
                   <Badge variant="secondary">4</Badge>
                 </TableCell>
                 <TableCell className="text-muted-foreground">
-                  <p className="text-wrap">
-                    Maximum number of toasts shown at once. Extra toasts are
-                    dismissed to enforce the limit.
-                  </p>
+                  Maximum number of toasts shown at once. Extra toasts are
+                  dismissed to enforce the limit.
                 </TableCell>
               </TableRow>
             </TableBody>
           </Table>
 
-          {/* Theme note (NextThemes / shadcn) */}
           <div className="mt-5 rounded-lg border bg-muted/40 p-4">
             <div className="text-sm font-medium">Theme compatibility</div>
             <p className="mt-2 text-sm text-muted-foreground">
