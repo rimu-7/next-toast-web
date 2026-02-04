@@ -44,6 +44,7 @@ export const metadata: Metadata = {
     google: "LU3V9H0GGuC8ow7uQSCv05MSnC1vQyM0dFOx0zkbFII",
   },
 
+
   openGraph: {
     type: "website",
     url: SITE_URL,

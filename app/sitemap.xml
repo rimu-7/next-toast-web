@@ -1,0 +1,23 @@
+import type { MetadataRoute } from "next";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const site =
+    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+    "https://toast.rimubhai.com";
+
+  // Add all your main routes here (you can expand later)
+  const routes = [
+    "",
+    "/docs/get-started",
+    "/docs/toasts",
+    "/docs/configuration",
+    "/docs/examples",
+  ];
+
+  return routes.map((path) => ({
+    url: `${site}${path}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: path === "" ? 1 : 0.7,
+  }));
+}
