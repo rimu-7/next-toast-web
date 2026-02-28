@@ -7,8 +7,7 @@ import { Rubik_Puddles } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 
-// shadcn/ui
-import { Badge } from "@/components/ui/badge";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
